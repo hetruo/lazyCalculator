@@ -66,7 +66,7 @@
 
 <script>
   export default {
-    name: 'converter',
+    name: 'lazyCalculator',
     data () {
       return {
         capacitorIn: '',
