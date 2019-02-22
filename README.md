@@ -1,4 +1,4 @@
-# convertidor
+# lazyCalculator
 
 > An electron-vue project
 
