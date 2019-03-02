@@ -14,19 +14,21 @@
                 </v-flex>
               </v-layout>
               <v-container grid-list-sm>
-                <template v-for="(color,i) in colors">
-                  <v-layout row justify-space-around :key="'row'+i" style="margin-top:-10px">
+
+                <template v-for="(band,i) in band1">
+                  <v-layout row justify-space-around :key="'row'+i" style="margin-top:-5px">
                     <v-flex xs4>
-                      <v-btn depressed small round :color=colors[i].rgb style="width:80%" @click="calculate(0,i)"></v-btn>
+                      <v-btn  small  :color=band1[i].rgb style="width:80%" @click="calculate(1,i)" :round=band1[i].selected ></v-btn>
                     </v-flex>
                     <v-flex xs4>
-                      <v-btn depressed small round :color=colors[i].rgb style="width:80%" @click="calculate(1,i)"></v-btn>
+                      <v-btn  small  :color=band2[i].rgb style="width:80%" @click="calculate(2,i)" :round=band2[i].selected ></v-btn>
                     </v-flex>
                     <v-flex xs4>
-                      <v-btn depressed small round :color=colors[i].rgb style="width:80%" @click="calculate(2,i)"></v-btn>
+                      <v-btn  small  :color=band3[i].rgb style="width:80%" @click="calculate(3,i)" :round=band3[i].selected ></v-btn>
                     </v-flex>
                   </v-layout>
                 </template>
+
               </v-container>
             </v-card>
           </v-flex>
@@ -35,11 +37,7 @@
         <div class="container">
           <v-flex xs12>
             <v-card>
-              <v-flex xs12>
-                  <img src="./assets/capacitor.png" class="capacitor">
-                </v-flex>
               <v-layout row justify-space-around>
-                
                 <v-flex xs3>
                   <v-text-field  v-model="capacitorIn" @keypress="calculateCapacitor('0')"></v-text-field>
                 </v-flex>
@@ -75,82 +73,219 @@
         second: '',
         multiplier: '',
         value: '',
-        colors: [
+        band1: [
           {
             name: 'black',
             rgb: '#424242',
             value: '0',
-            multiplier: 1
+            selected: false
           },
           {
             name: 'brown',
             rgb: '#5D4037',
             value: '1',
-            multiplier: 10
+            selected: false
           },
           {
             name: 'red',
             rgb: '#FF5252',
             value: '2',
-            multiplier: 100
+            selected: false
           },
           {
             name: 'orange',
             rgb: '#F57C00',
             value: '3',
-            multiplier: 1000
+            selected: false
           },
           {
             name: 'yellow',
             rgb: '#FFEE58',
             value: '4',
-            multiplier: 10000
+            selected: false
           },
           {
             name: 'green',
             rgb: '#689F38',
             value: '5',
-            multiplier: 100000
+            selected: false
           },
           {
             name: 'blue',
             rgb: '#0091EA',
             value: '6',
-            multiplier: 1000000
+            selected: false
           },
           {
             name: 'purple',
             rgb: '#D500F9',
             value: '7',
-            multiplier: 10000000
+            selected: false
           },
           {
             name: 'grey',
             rgb: '#90A4AE',
             value: '8',
-            multiplier: 100000000
+            selected: false
           },
           {
             name: 'white',
             rgb: '#ECEFF1',
             value: '9',
-            multiplier: 1000000000
+            selected: false
+          }
+        ],
+        band2: [
+          {
+            name: 'black',
+            rgb: '#424242',
+            value: '0',
+            selected: false
+          },
+          {
+            name: 'brown',
+            rgb: '#5D4037',
+            value: '1',
+            selected: false
+          },
+          {
+            name: 'red',
+            rgb: '#FF5252',
+            value: '2',
+            selected: false
+          },
+          {
+            name: 'orange',
+            rgb: '#F57C00',
+            value: '3',
+            selected: false
+          },
+          {
+            name: 'yellow',
+            rgb: '#FFEE58',
+            value: '4',
+            selected: false
+          },
+          {
+            name: 'green',
+            rgb: '#689F38',
+            value: '5',
+            selected: false
+          },
+          {
+            name: 'blue',
+            rgb: '#0091EA',
+            value: '6',
+            selected: false
+          },
+          {
+            name: 'purple',
+            rgb: '#D500F9',
+            value: '7',
+            selected: false
+          },
+          {
+            name: 'grey',
+            rgb: '#90A4AE',
+            value: '8',
+            selected: false
+          },
+          {
+            name: 'white',
+            rgb: '#ECEFF1',
+            value: '9',
+            selected: false
+          }
+        ],
+        band3: [
+          {
+            name: 'black',
+            rgb: '#424242',
+            multiplier: 1,
+            selected: false
+          },
+          {
+            name: 'brown',
+            rgb: '#5D4037',
+            multiplier: 10,
+            selected: false
+          },
+          {
+            name: 'red',
+            rgb: '#FF5252',
+            multiplier: 100,
+            selected: false
+          },
+          {
+            name: 'orange',
+            rgb: '#F57C00',
+            multiplier: 1000,
+            selected: false
+          },
+          {
+            name: 'yellow',
+            rgb: '#FFEE58',
+            multiplier: 10000,
+            selected: false
+          },
+          {
+            name: 'green',
+            rgb: '#689F38',
+            multiplier: 100000,
+            selected: false
+          },
+          {
+            name: 'blue',
+            rgb: '#0091EA',
+            multiplier: 1000000,
+            selected: false
+          },
+          {
+            name: 'purple',
+            rgb: '#D500F9',
+            multiplier: 10000000,
+            selected: false
+          },
+          {
+            name: 'grey',
+            rgb: '#90A4AE',
+            multiplier: 100000000,
+            selected: false
+          },
+          {
+            name: 'white',
+            rgb: '#ECEFF1',
+            multiplier: 1000000000,
+            selected: false
           }
         ],
         units: ['Nano','Mili'],
-        unit: ''
+        selectedUnit: ''
       }
     },
     methods: {
-      calculate (column,row) {
-        if(column===0){
-          this.first = this.colors[row].value
+      calculate (band,color) {
+        var i  
+        if(band===1){
+          for(i=0; i<this.band1.length; i++){
+            this.band1[i].selected = false
+          }
+          this.first = this.band1[color].value
+          this.band1[color].selected = true
         }
-        if(column===1) {
-          this.second = this.colors[row].value
+        if(band===2) {
+          for(i=0; i<this.band2.length; i++){
+            this.band2[i].selected = false
+          }
+          this.second = this.band2[color].value
+          this.band2[color].selected = true
         }
-        if(column===2) {
-          this.multiplier = this.colors[row].multiplier
+        if(band===3) {
+          for(i=0; i<this.band3.length; i++){
+            this.band3[i].selected = false
+          }
+          this.multiplier = this.band3[color].multiplier
+          this.band3[color].selected = true
         }
         if(this.first!==''&&this.second!==''&&this.multiplier!==''){
           var r = parseInt(this.first+this.second)*this.multiplier
@@ -165,10 +300,10 @@
       },
       calculateCapacitor (input) {
         if(!Number.isInteger(input)){
-          this.unit = input
+          this.selectedUnit = input
         }
-        if(this.unit!==undefined && this.capacitorIn!==''){
-          if(this.unit==='Mili') {
+        if(this.selectedUnit!==undefined && this.capacitorIn!==''){
+          if(this.selectedUnit==='Mili') {
               this.capacitorOut = this.capacitorIn*1000+' Micros'
           }
           else {
